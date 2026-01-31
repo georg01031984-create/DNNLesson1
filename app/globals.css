@@ -1,2 +1,443 @@
-/* минимальные стили */
-body { margin: 0; font-family: system-ui, sans-serif; padding: 1rem; }
+/* SwiftLink Admin Dashboard — design tokens from design.json */
+:root {
+  /* Primitives */
+  --white: #FFFFFF;
+  --nearWhite: #F9FBFC;
+  --surfaceAlt: #F7FCFC;
+  --mintFrame: #B6EAD1;
+  --mintSoft: #EAF7F0;
+  --mintSofter: #F1F9F4;
+  --mintIconBg: #C3FFE6;
+  --greenPrimary: #10B468;
+  --greenPrimaryHover: #0FA763;
+  --greenPrimaryActive: #0B8F55;
+  --greenIcon: #04AE60;
+  --orangePrimary: #F87010;
+  --orangeIcon: #DF6710;
+  --orangeIconBg: #FFC68D;
+  --redPrimary: #F06868;
+  --purplePrimary: #8A47E6;
+  --yellowBg: #FFEB75;
+  --yellowFg: #F2CD38;
+  --textPrimary: #0F172A;
+  --textSecondary: #475467;
+  --textMuted: #667085;
+  --textDisabled: #98A2B3;
+  --borderSubtle: #EAECF0;
+  --borderStronger: #E4E7EC;
+  --shadowInk: #101828;
+
+  /* Semantic */
+  --bgPage: #FFFFFF;
+  --bgPageInset: #F9FBFC;
+  --bgFrame: #B6EAD1;
+  --bgSectionHeader: #EAF7F0;
+  --bgHoverRow: #F1F9F4;
+  --bgSelectedSoft: #EAF7F0;
+  --textHeading: #0F172A;
+  --textBody: #475467;
+  --textMutedSem: #667085;
+  --textLink: #10B468;
+  --borderDefault: #EAECF0;
+  --focusRing: 0 0 0 4px rgba(195, 255, 230, 1);
+
+  /* Component */
+  --cardBg: #FFFFFF;
+  --cardBorder: #EAECF0;
+  --shadowSm: 0px 2px 10px rgba(16, 24, 40, 0.06);
+  --shadowXs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  --radiusCard: 12px;
+  --radiusButton: 10px;
+  --radiusInput: 10px;
+  --radiusPill: 999px;
+  --radiusIconTile: 10px;
+
+  /* Sidebar */
+  --sidebarWidth: 220px;
+  --sidebarBg: #FFFFFF;
+  --sidebarDivider: #EAECF0;
+  --navItemHeight: 40px;
+  --navItemPaddingX: 12px;
+  --navDefaultText: #475467;
+  --navDefaultIcon: #667085;
+  --navHoverBg: #EAF7F0;
+  --navHoverText: #0F172A;
+  --navHoverIcon: #10B468;
+  --navActiveBg: #10B468;
+  --navActiveText: #FFFFFF;
+  --navActiveIcon: #FFFFFF;
+
+  /* TopBar */
+  --topBarHeight: 64px;
+  --topBarBg: #FFFFFF;
+  --iconButtonHoverBg: #F2F4F7;
+
+  /* Table */
+  --tableHeaderBg: #EAF7F0;
+  --tableHeaderText: #475467;
+  --tableRowBg: #FFFFFF;
+  --tableRowHoverBg: #F1F9F4;
+  --tableDivider: #EAECF0;
+
+  /* Status pills */
+  --pillSuccessBg: #EAF7F0;
+  --pillSuccessText: #10B468;
+  --pillPendingBg: #FFEBD9;
+  --pillPendingText: #DF6710;
+  --pillRejectedBg: #FDECEC;
+  --pillRejectedText: #F06868;
+
+  /* Icon tiles */
+  --iconTileSuccessBg: #C3FFE6;
+  --iconTileSuccessIcon: #04AE60;
+  --iconTileWarningBg: #FFC68D;
+  --iconTileWarningIcon: #DF6710;
+  --iconTilePendingBg: #FFEB75;
+  --iconTilePendingIcon: #F2CD38;
+  --iconTileAccentBg: #8A47E6;
+  --iconTileAccentIcon: #FFFFFF;
+
+  /* Typography */
+  --fontPrimary: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --fsCaption: 12px;
+  --fsBody: 14px;
+  --fsSubtitle: 16px;
+  --fsTitle: 18px;
+  --fsHeadline: 20px;
+  --fsMetric: 24px;
+  --fwRegular: 400;
+  --fwMedium: 500;
+  --fwSemibold: 600;
+  --fwBold: 700;
+  --lhTight: 1.2;
+  --lhNormal: 1.4;
+  --lhRelaxed: 1.6;
+
+  /* Motion */
+  --transitionFast: 150ms ease-out;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fontPrimary);
+  font-size: var(--fsBody);
+  line-height: var(--lhNormal);
+  color: var(--textBody);
+  background: var(--bgFrame);
+  min-height: 100vh;
+}
+
+/* AppShell */
+.appFrame {
+  min-height: 100vh;
+  background: var(--bgFrame);
+  padding: 16px;
+}
+
+.appCanvas {
+  display: flex;
+  min-height: calc(100vh - 32px);
+  background: var(--bgPage);
+  border-radius: var(--radiusCard);
+  box-shadow: var(--shadowSm);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: var(--sidebarWidth);
+  background: var(--sidebarBg);
+  border-right: 1px solid var(--sidebarDivider);
+  padding: var(--navItemPaddingX);
+  flex-shrink: 0;
+}
+
+.sidebarBrand {
+  font-size: var(--fsTitle);
+  font-weight: var(--fwBold);
+  color: var(--textPrimary);
+  padding: 12px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--sidebarDivider);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--navItemHeight);
+  padding: 0 var(--navItemPaddingX);
+  border: none;
+  border-radius: var(--radiusButton);
+  background: transparent;
+  color: var(--navDefaultText);
+  font-size: var(--fsBody);
+  font-weight: var(--fwMedium);
+  cursor: pointer;
+  transition: background-color var(--transitionFast), color var(--transitionFast);
+  width: 100%;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: var(--navHoverBg);
+  color: var(--navHoverText);
+}
+
+.navItemActive {
+  background: var(--navActiveBg);
+  color: var(--navActiveText);
+}
+
+.navItemActive:hover {
+  background: var(--navActiveBg);
+  color: var(--navActiveText);
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.mainArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topBar {
+  height: var(--topBarHeight);
+  background: var(--topBarBg);
+  border-bottom: 1px solid var(--borderDefault);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.topBarTitle {
+  font-size: var(--fsHeadline);
+  font-weight: var(--fwSemibold);
+  color: var(--textHeading);
+}
+
+.topBarActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radiusButton);
+  background: var(--white);
+  color: var(--textMuted);
+  cursor: pointer;
+  transition: background var(--transitionFast), color var(--transitionFast);
+}
+
+.iconBtn:hover {
+  background: var(--iconButtonHoverBg);
+  color: var(--textSecondary);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--mintSoft);
+  color: var(--greenPrimary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--fwSemibold);
+  font-size: var(--fsCaption);
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+  background: var(--bgPageInset);
+  overflow-auto: auto;
+}
+
+/* Page title */
+.pageTitle {
+  font-size: var(--fsTitle);
+  font-weight: var(--fwSemibold);
+  color: var(--textHeading);
+  margin: 0 0 24px 0;
+}
+
+/* Cards */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--cardBg);
+  border: 1px solid var(--cardBorder);
+  border-radius: var(--radiusCard);
+  box-shadow: var(--shadowSm);
+  padding: 16px;
+  transition: box-shadow var(--transitionFast);
+}
+
+.card:hover {
+  box-shadow: 0px 4px 14px rgba(16, 24, 40, 0.08);
+}
+
+.statCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.statCardLabel {
+  font-size: var(--fsCaption);
+  font-weight: var(--fwMedium);
+  color: var(--textMuted);
+  margin: 0 0 4px 0;
+}
+
+.statCardMetric {
+  font-size: var(--fsMetric);
+  font-weight: var(--fwBold);
+  color: var(--textPrimary);
+  line-height: var(--lhTight);
+  margin: 0;
+}
+
+.iconTile {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radiusIconTile);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconTileSuccess { background: var(--iconTileSuccessBg); color: var(--iconTileSuccessIcon); }
+.iconTileWarning { background: var(--iconTileWarningBg); color: var(--iconTileWarningIcon); }
+.iconTilePending { background: var(--iconTilePendingBg); color: var(--iconTilePendingIcon); }
+.iconTileAccent { background: var(--iconTileAccentBg); color: var(--iconTileAccentIcon); }
+
+/* Table */
+.tableWrap {
+  background: var(--cardBg);
+  border: 1px solid var(--cardBorder);
+  border-radius: var(--radiusCard);
+  box-shadow: var(--shadowSm);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: var(--tableHeaderBg);
+  color: var(--tableHeaderText);
+  font-size: var(--fsCaption);
+  font-weight: var(--fwSemibold);
+  text-align: left;
+  padding: 10px 16px;
+  height: 36px;
+  border-bottom: 1px solid var(--tableDivider);
+}
+
+.table td {
+  background: var(--tableRowBg);
+  color: var(--textSecondary);
+  font-size: var(--fsCaption);
+  font-weight: var(--fwMedium);
+  padding: 10px 16px;
+  height: 40px;
+  border-bottom: 1px solid var(--tableDivider);
+}
+
+.table tbody tr {
+  transition: background var(--transitionFast);
+}
+
+.table tbody tr:hover td {
+  background: var(--tableRowHoverBg);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status pill */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: var(--radiusPill);
+  font-size: var(--fsCaption);
+  font-weight: var(--fwSemibold);
+  border: none;
+}
+
+.pillSuccess { background: var(--pillSuccessBg); color: var(--pillSuccessText); }
+.pillPending { background: var(--pillPendingBg); color: var(--pillPendingText); }
+.pillRejected { background: var(--pillRejectedBg); color: var(--pillRejectedText); }
+
+/* Button */
+.btnPrimary {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--radiusButton);
+  border: none;
+  background: var(--greenPrimary);
+  color: var(--white);
+  font-size: var(--fsBody);
+  font-weight: var(--fwSemibold);
+  cursor: pointer;
+  transition: background var(--transitionFast);
+}
+
+.btnPrimary:hover {
+  background: var(--greenPrimaryHover);
+}
+
+.btnPrimary:active {
+  background: var(--greenPrimaryActive);
+}
+
+/* Section */
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: var(--fsSubtitle);
+  font-weight: var(--fwSemibold);
+  color: var(--textHeading);
+  margin: 0 0 12px 0;
+}
+
+.sectionDesc {
+  font-size: var(--fsBody);
+  color: var(--textMuted);
+  margin: 0 0 16px 0;
+  max-width: 560px;
+}

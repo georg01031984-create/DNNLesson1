@@ -1,0 +1,664 @@
+{
+    "meta": {
+      "designSystemName": "SwiftLink Admin Dashboard (extracted)",
+      "source": "screenshots",
+      "notes": [
+        "Значения HEX извлечены из пикселей на скриншотах (антиалиасинг/градиенты дают вариации в пределах ±1–3%).",
+        "Тени на скриншотах очень мягкие; их параметры восстановлены как типовые для такого UI."
+      ]
+    },
+    "foundations": {
+      "gridAndLayout": {
+        "baseUnitPx": 8,
+        "containerMaxWidth": "desktop",
+        "appShell": {
+          "outerFrameBackground": {
+            "type": "solid",
+            "color": "#B6EAD1",
+            "usage": [
+              "внешний фон/рамка вокруг основного белого холста на всех экранах"
+            ]
+          },
+          "canvasBackground": {
+            "type": "solid",
+            "color": "#FFFFFF",
+            "nearWhiteVariant": "#F9FBFC",
+            "usage": [
+              "основной фон страницы внутри рамки"
+            ]
+          },
+          "sidebar": {
+            "widthPx": 220,
+            "background": "#FFFFFF",
+            "dividerColor": "#EAECF0",
+            "contentPaddingPx": 16
+          },
+          "topBar": {
+            "heightPx": 64,
+            "background": "#FFFFFF",
+            "rightActions": [
+              "иконка настроек/тема/уведомления",
+              "аватар"
+            ],
+            "iconButton": {
+              "sizePx": 32,
+              "background": "#FFFFFF",
+              "border": "none",
+              "hoverBackground": "#F2F4F7"
+            }
+          }
+        }
+      },
+      "colorTokens": {
+        "primitives": {
+          "white": "#FFFFFF",
+          "nearWhite": "#F9FBFC",
+          "surfaceAlt": "#F7FCFC",
+          "mintFrame": "#B6EAD1",
+          "mintSoft": "#EAF7F0",
+          "mintSofter": "#F1F9F4",
+          "mintIconBg": "#C3FFE6",
+          "greenPrimary": "#10B468",
+          "greenPrimaryAlt": "#10B76A",
+          "greenIcon": "#04AE60",
+          "orangePrimary": "#F87010",
+          "orangeIcon": "#DF6710",
+          "orangeIconBg": "#FFC68D",
+          "redPrimary": "#F06868",
+          "purplePrimary": "#8A47E6",
+          "yellowBg": "#FFEB75",
+          "yellowFg": "#F2CD38",
+          "textPrimary": "#0F172A",
+          "textSecondary": "#475467",
+          "textMuted": "#667085",
+          "textDisabled": "#98A2B3",
+          "borderSubtle": "#EAECF0",
+          "borderSubtle2": "#E4E7EC",
+          "shadowInk": "#101828"
+        },
+        "semantics": {
+          "background": {
+            "page": "#FFFFFF",
+            "pageInset": "#F9FBFC",
+            "frame": "#B6EAD1",
+            "sectionHeader": "#EAF7F0",
+            "hoverRow": "#F1F9F4",
+            "selectedSoft": "#EAF7F0"
+          },
+          "text": {
+            "heading": "#0F172A",
+            "body": "#475467",
+            "muted": "#667085",
+            "inverse": "#FFFFFF",
+            "disabled": "#98A2B3",
+            "linkOrAction": "#10B468"
+          },
+          "border": {
+            "default": "#EAECF0",
+            "stronger": "#E4E7EC",
+            "focusRing": "#C3FFE6"
+          },
+          "status": {
+            "success": {
+              "bgSoft": "#EAF7F0",
+              "fg": "#10B468",
+              "dot": "#04AE60"
+            },
+            "warning": {
+              "bgSoft": "#FFEB75",
+              "fg": "#DF6710",
+              "dot": "#F87010"
+            },
+            "danger": {
+              "bgSoft": "#FDECEC",
+              "fg": "#F06868",
+              "dot": "#F06868"
+            },
+            "info": {
+              "bgSoft": "#F2F4F7",
+              "fg": "#475467"
+            }
+          },
+          "charts": {
+            "areaLine": "#10B468",
+            "areaFillGradient": {
+              "type": "linear",
+              "direction": "topToBottom",
+              "stops": [
+                {
+                  "color": "#9ADCC1",
+                  "opacity": 1,
+                  "at": 0
+                },
+                {
+                  "color": "#F9FBFC",
+                  "opacity": 0,
+                  "at": 1
+                }
+              ],
+              "usage": [
+                "заливка area-chart в карточках Revenue/Analytics"
+              ]
+            },
+            "donut": {
+              "green": "#10B468",
+              "orange": "#F87010",
+              "red": "#F06868",
+              "mint": "#B6EAD1"
+            }
+          }
+        },
+        "componentMapping": {
+          "card": {
+            "background": "#FFFFFF",
+            "border": "#EAECF0",
+            "shadow": "shadow.sm",
+            "headerText": "#667085",
+            "valueText": "#0F172A"
+          },
+          "sidebarNav": {
+            "item": {
+              "default": {
+                "text": "#475467",
+                "icon": "#667085",
+                "background": "transparent"
+              },
+              "hover": {
+                "background": "#EAF7F0",
+                "text": "#0F172A",
+                "icon": "#10B468"
+              },
+              "active": {
+                "background": "#10B468",
+                "text": "#FFFFFF",
+                "icon": "#FFFFFF"
+              }
+            }
+          },
+          "table": {
+            "headerRow": {
+              "background": "#EAF7F0",
+              "text": "#475467",
+              "divider": "#EAECF0"
+            },
+            "bodyRow": {
+              "background": "#FFFFFF",
+              "text": "#475467",
+              "divider": "#EAECF0",
+              "hoverBackground": "#F1F9F4"
+            }
+          },
+          "statusPill": {
+            "success": {
+              "bg": "#EAF7F0",
+              "text": "#10B468",
+              "border": "transparent"
+            },
+            "warning": {
+              "bg": "#FFEBD9",
+              "text": "#DF6710",
+              "border": "transparent"
+            },
+            "danger": {
+              "bg": "#FDECEC",
+              "text": "#F06868",
+              "border": "transparent"
+            }
+          },
+          "iconBadge": {
+            "success": {
+              "bg": "#C3FFE6",
+              "icon": "#04AE60"
+            },
+            "warning": {
+              "bg": "#FFC68D",
+              "icon": "#DF6710"
+            },
+            "pending": {
+              "bg": "#FFEB75",
+              "icon": "#F2CD38"
+            },
+            "accent": {
+              "bg": "#8A47E6",
+              "icon": "#FFFFFF"
+            }
+          }
+        }
+      },
+      "typography": {
+        "fontFamily": {
+          "primary": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+        },
+        "scalePx": {
+          "caption": 12,
+          "body": 14,
+          "bodyStrong": 14,
+          "subtitle": 16,
+          "title": 18,
+          "headline": 20,
+          "metric": 24
+        },
+        "lineHeights": {
+          "tight": 1.2,
+          "normal": 1.4,
+          "relaxed": 1.6
+        },
+        "weights": {
+          "regular": 400,
+          "medium": 500,
+          "semibold": 600,
+          "bold": 700
+        },
+        "usageRules": [
+          "Заголовки страниц: 18–20px, weight 600–700, цвет textPrimary.",
+          "Значения метрик в карточках: 24px, weight 700, цвет textPrimary.",
+          "Подписи/лейблы: 12–14px, weight 500, цвет textMuted.",
+          "Текст в таблицах: 12–14px, weight 500, цвет textSecondary."
+        ]
+      },
+      "radiusPx": {
+        "card": 12,
+        "button": 10,
+        "input": 10,
+        "pill": 999,
+        "iconTile": 10,
+        "tableContainer": 12
+      },
+      "shadows": {
+        "sm": {
+          "css": "0px 2px 10px rgba(16, 24, 40, 0.06)",
+          "usage": [
+            "карточки-виджеты",
+            "контейнеры таблиц"
+          ]
+        },
+        "xs": {
+          "css": "0px 1px 2px rgba(16, 24, 40, 0.05)",
+          "usage": [
+            "кнопки",
+            "инпуты (очень мягко/по ситуации)"
+          ]
+        },
+        "focusRing": {
+          "css": "0 0 0 4px rgba(195, 255, 230, 1)",
+          "usage": [
+            "focus состояния инпутов/селектов/кнопок"
+          ]
+        }
+      },
+      "a11y": {
+        "contrastSamples": [
+          {
+            "pair": "textPrimary on white",
+            "fg": "#0F172A",
+            "bg": "#FFFFFF",
+            "ratio": 17.85
+          },
+          {
+            "pair": "textSecondary on white",
+            "fg": "#475467",
+            "bg": "#FFFFFF",
+            "ratio": 7.69
+          },
+          {
+            "pair": "white on greenPrimary (observed)",
+            "fg": "#FFFFFF",
+            "bg": "#10B468",
+            "ratio": 2.71,
+            "note": "На скриншотах белый текст на зелёном выглядит эстетично, но формально ниже WCAG AA для обычного текста."
+          }
+        ],
+        "recommendedAccessibleVariant": {
+          "greenPrimaryForWhiteText": "#0A8E53",
+          "expectedRatioWhiteOnGreen": 4.19,
+          "usage": [
+            "если нужен WCAG AA для белого текста на primary-кнопках/активном пункте меню"
+          ]
+        }
+      }
+    },
+    "components": {
+      "AppShell": {
+        "parts": {
+          "frame": {
+            "background": "#B6EAD1"
+          },
+          "canvas": {
+            "background": "#FFFFFF"
+          }
+        }
+      },
+      "SidebarNav": {
+        "anatomy": [
+          "brandRow",
+          "navItem (icon + label)",
+          "logoutItem"
+        ],
+        "navItem": {
+          "size": {
+            "heightPx": 40,
+            "paddingX": 12,
+            "gapPx": 10
+          },
+          "default": {
+            "background": "transparent",
+            "textColor": "#475467",
+            "iconColor": "#667085"
+          },
+          "hover": {
+            "background": "#EAF7F0",
+            "textColor": "#0F172A",
+            "iconColor": "#10B468"
+          },
+          "active": {
+            "background": "#10B468",
+            "textColor": "#FFFFFF",
+            "iconColor": "#FFFFFF"
+          },
+          "focus": {
+            "ring": "shadows.focusRing"
+          },
+          "disabled": {
+            "textColor": "#98A2B3",
+            "iconColor": "#98A2B3",
+            "background": "transparent"
+          }
+        },
+        "doNot": [
+          "НЕ делай активный пункт меню градиентным — активное состояние здесь плоское (solid) зелёное.",
+          "НЕ окрашивай все иконки меню в зелёный по умолчанию — зелёный появляется только на hover/active."
+        ]
+      },
+      "Card": {
+        "base": {
+          "background": "#FFFFFF",
+          "radius": 12,
+          "border": "1px solid #EAECF0",
+          "shadow": "shadows.sm",
+          "paddingPx": 16
+        },
+        "statCard": {
+          "anatomy": [
+            "label",
+            "metric",
+            "iconTile (optional)"
+          ],
+          "label": {
+            "fontSizePx": 12,
+            "color": "#667085"
+          },
+          "metric": {
+            "fontSizePx": 24,
+            "weight": 700,
+            "color": "#0F172A"
+          },
+          "iconTile": {
+            "sizePx": 32,
+            "radiusPx": 10,
+            "variants": {
+              "success": {
+                "bg": "#C3FFE6",
+                "icon": "#04AE60"
+              },
+              "warning": {
+                "bg": "#FFC68D",
+                "icon": "#DF6710"
+              },
+              "pending": {
+                "bg": "#FFEB75",
+                "icon": "#F2CD38"
+              },
+              "accent": {
+                "bg": "#8A47E6",
+                "icon": "#FFFFFF"
+              }
+            }
+          }
+        },
+        "doNot": [
+          "НЕ применяй градиент заливки графика к фону карточки — карточка всегда белая.",
+          "НЕ рисуй заметные рамки у карточек — граница очень тонкая (#EAECF0) и/или только тень."
+        ]
+      },
+      "Table": {
+        "container": {
+          "background": "#FFFFFF",
+          "radiusPx": 12,
+          "border": "1px solid #EAECF0",
+          "shadow": "shadows.sm"
+        },
+        "headerRow": {
+          "background": "#EAF7F0",
+          "textColor": "#475467",
+          "fontSizePx": 12,
+          "weight": 600,
+          "heightPx": 36,
+          "dividerColor": "#EAECF0"
+        },
+        "bodyRow": {
+          "background": "#FFFFFF",
+          "textColor": "#475467",
+          "fontSizePx": 12,
+          "weight": 500,
+          "heightPx": 40,
+          "dividerColor": "#EAECF0",
+          "hover": {
+            "background": "#F1F9F4"
+          }
+        },
+        "actionCell": {
+          "iconColor": "#10B468",
+          "iconHoverBg": "#EAF7F0",
+          "hitAreaPx": 32
+        },
+        "doNot": [
+          "НЕ делай зебру (striped) по умолчанию — строки белые, акцент через hover.",
+          "НЕ используй тёмные линии сетки — разделители очень мягкие (#EAECF0)."
+        ]
+      },
+      "StatusPill": {
+        "base": {
+          "heightPx": 22,
+          "paddingX": 10,
+          "radius": 999,
+          "fontSizePx": 12,
+          "weight": 600,
+          "border": "none"
+        },
+        "variants": {
+          "approved": {
+            "background": "#EAF7F0",
+            "text": "#10B468"
+          },
+          "pending": {
+            "background": "#FFEBD9",
+            "text": "#DF6710"
+          },
+          "rejected": {
+            "background": "#FDECEC",
+            "text": "#F06868"
+          }
+        },
+        "doNot": [
+          "НЕ делай pill с обводкой — на скриншотах это всегда мягкая заливка без border.",
+          "НЕ используй один и тот же зелёный для фона и текста — фон всегда очень светлый, текст насыщенный."
+        ]
+      },
+      "Button": {
+        "base": {
+          "heightPx": 36,
+          "radiusPx": 10,
+          "paddingX": 14,
+          "fontSizePx": 14,
+          "weight": 600
+        },
+        "primary": {
+          "background": "#10B468",
+          "text": "#FFFFFF",
+          "icon": "#FFFFFF",
+          "hover": {
+            "background": "#0FA763"
+          },
+          "active": {
+            "background": "#0B8F55"
+          },
+          "focus": {
+            "ring": "shadows.focusRing"
+          },
+          "disabled": {
+            "background": "#E4E7EC",
+            "text": "#98A2B3",
+            "icon": "#98A2B3"
+          }
+        },
+        "ghostIcon": {
+          "sizePx": 32,
+          "background": "#FFFFFF",
+          "icon": "#667085",
+          "hover": {
+            "background": "#F2F4F7",
+            "icon": "#475467"
+          }
+        },
+        "doNot": [
+          "НЕ делай primary-кнопки градиентными — это solid-заливка.",
+          "НЕ применяй зелёный primary к обычным текстовым ссылкам — ссылки/экшены зелёные, но без заливки."
+        ]
+      },
+      "Input": {
+        "base": {
+          "heightPx": 36,
+          "radiusPx": 10,
+          "background": "#FFFFFF",
+          "border": "1px solid #EAECF0",
+          "text": "#0F172A",
+          "placeholder": "#98A2B3"
+        },
+        "hover": {
+          "border": "1px solid #E4E7EC"
+        },
+        "focus": {
+          "border": "1px solid #10B468",
+          "ring": "shadows.focusRing"
+        },
+        "disabled": {
+          "background": "#F2F4F7",
+          "text": "#98A2B3",
+          "border": "1px solid #EAECF0"
+        },
+        "doNot": [
+          "НЕ делай инпуты с сильной тенью — максимум лёгкий xs, чаще только border.",
+          "НЕ окрашивай placeholder в слишком тёмный — он заметно светлее основного текста."
+        ]
+      },
+      "Select": {
+        "base": {
+          "heightPx": 36,
+          "radiusPx": 10,
+          "background": "#FFFFFF",
+          "border": "1px solid #EAECF0",
+          "text": "#475467",
+          "chevron": "#667085"
+        },
+        "hover": {
+          "border": "1px solid #E4E7EC",
+          "background": "#FFFFFF"
+        },
+        "focus": {
+          "border": "1px solid #10B468",
+          "ring": "shadows.focusRing"
+        }
+      },
+      "Toggle": {
+        "track": {
+          "widthPx": 44,
+          "heightPx": 24,
+          "radiusPx": 999
+        },
+        "thumb": {
+          "sizePx": 18,
+          "radiusPx": 999,
+          "shadow": "0px 1px 2px rgba(16, 24, 40, 0.10)"
+        },
+        "states": {
+          "on": {
+            "trackBg": "#10B468",
+            "thumbBg": "#FFFFFF"
+          },
+          "off": {
+            "trackBg": "#E4E7EC",
+            "thumbBg": "#FFFFFF"
+          },
+          "focus": {
+            "ring": "shadows.focusRing"
+          },
+          "disabled": {
+            "trackBg": "#EAECF0",
+            "thumbBg": "#F2F4F7"
+          }
+        }
+      },
+      "Charts": {
+        "AreaChartCard": {
+          "canvasBg": "#FFFFFF",
+          "lineColor": "#10B468",
+          "fill": "semantics.charts.areaFillGradient",
+          "axes": {
+            "label": "#98A2B3",
+            "gridline": "#EAECF0"
+          }
+        },
+        "DonutChart": {
+          "segments": [
+            {
+              "name": "primary",
+              "color": "#10B468"
+            },
+            {
+              "name": "warning",
+              "color": "#F87010"
+            },
+            {
+              "name": "danger",
+              "color": "#F06868"
+            },
+            {
+              "name": "mint",
+              "color": "#B6EAD1"
+            }
+          ],
+          "legendText": "#475467"
+        },
+        "doNot": [
+          "НЕ применяй заливку area-chart как фон всей страницы/секции — это только внутри графика.",
+          "НЕ делай оси и сетку тёмными — они очень лёгкие и второстепенные."
+        ]
+      }
+    },
+    "interactionRules": {
+      "hoverPhilosophy": [
+        "Hover почти всегда выражается мягкой заливкой (mintSoft/graySoft), а не изменением размера.",
+        "Активные состояния — более насыщенная заливка без градиентов."
+      ],
+      "focusPhilosophy": [
+        "Focus показывается через мягкое внешнее кольцо mintIconBg (4px) + зелёный border на контроле."
+      ],
+      "motion": {
+        "durationMs": 150,
+        "easing": "ease-out",
+        "appliesTo": [
+          "hover фон кнопок/иконок",
+          "подсветка строк таблиц",
+          "переключатель toggle"
+        ]
+      }
+    },
+    "globalDoNot": [
+      "НЕ переносить градиенты/заливки графиков на карточки, кнопки или иконки — градиенты только в графиках.",
+      "НЕ использовать зелёный primary как цвет для всего текста — зелёный только для действий/состояний/акцентов.",
+      "НЕ утяжелять UI тёмными бордерами и сильными тенями — стиль воздушный, границы очень мягкие (#EAECF0).",
+      "НЕ делать круглые углы слишком маленькими (например 4px) — здесь почти везде 10–12px, а pill — полностью круглый.",
+      "НЕ добавлять лишнюю «зебру» в таблицы — по умолчанию белые строки + hover."
+    ]
+  }
+  
