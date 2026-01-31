@@ -7,7 +7,7 @@ export default function Home() {
         <div className="card">
           <div className="statCard">
             <div>
-              <p className="statCardLabel">Выручка за месяц</p>
+              <p className="statCardLabel">Выручка за месяц - Логистика + аутстафф</p>
               <p className="statCardMetric">₽ 1 247 800</p>
             </div>
             <div className="iconTile iconTileSuccess" aria-hidden>↑</div>
