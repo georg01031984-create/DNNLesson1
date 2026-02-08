@@ -1,3 +1,5 @@
+import OrdersTable from './OrdersTable';
+
 export default function Home() {
   return (
     <>
@@ -47,56 +49,7 @@ export default function Home() {
         <p className="sectionDesc">
           Ниже список последних заказов. Нажмите на строку для перехода к деталям или используйте действия справа.
         </p>
-        <div className="tableWrap">
-          <table className="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Клиент</th>
-                <th>Сумма</th>
-                <th>Статус</th>
-                <th>Дата</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#10284</td>
-                <td>ООО «Ромашка»</td>
-                <td>₽ 45 200</td>
-                <td><span className="pill pillSuccess">Оплачен</span></td>
-                <td>31.01.2026</td>
-              </tr>
-              <tr>
-                <td>#10283</td>
-                <td>Иван Петров</td>
-                <td>₽ 12 900</td>
-                <td><span className="pill pillPending">В обработке</span></td>
-                <td>30.01.2026</td>
-              </tr>
-              <tr>
-                <td>#10282</td>
-                <td>Анна Сидорова</td>
-                <td>₽ 8 400</td>
-                <td><span className="pill pillSuccess">Доставлен</span></td>
-                <td>30.01.2026</td>
-              </tr>
-              <tr>
-                <td>#10281</td>
-                <td>Петр Козлов</td>
-                <td>₽ 23 100</td>
-                <td><span className="pill pillRejected">Отменён</span></td>
-                <td>29.01.2026</td>
-              </tr>
-              <tr>
-                <td>#10280</td>
-                <td>Мария Новикова</td>
-                <td>₽ 67 500</td>
-                <td><span className="pill pillSuccess">Оплачен</span></td>
-                <td>29.01.2026</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <OrdersTable />
       </section>
 
       <section className="section">
