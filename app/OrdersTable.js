@@ -106,21 +106,30 @@ function normalizeTableData(raw) {
     if (first && typeof first === 'object' && !Array.isArray(first)) {
       const headers = Object.keys(first);
       const rows = raw.map((obj) => headers.map((k) => obj[k] ?? ''));
-      return { headers, rows };
+      return stripRowNumberColumn({ headers, rows });
     }
     if (Array.isArray(first)) {
       const headers = raw[0].map(String);
       const rows = raw.slice(1);
-      return { headers, rows };
+      return stripRowNumberColumn({ headers, rows });
     }
   }
   if (raw && typeof raw === 'object') {
-    if (Array.isArray(raw.headers) && Array.isArray(raw.rows)) return raw;
+    if (Array.isArray(raw.headers) && Array.isArray(raw.rows)) return stripRowNumberColumn(raw);
     if (Array.isArray(raw.data)) return normalizeTableData(raw.data);
     const keys = Object.keys(raw);
     const headers = keys;
     const rows = keys.length ? [keys.map((k) => raw[k] ?? '')] : [];
-    return { headers, rows };
+    return stripRowNumberColumn({ headers, rows });
   }
   return { headers: [], rows: [] };
+}
+
+function stripRowNumberColumn({ headers, rows }) {
+  const idx = headers.findIndex((h) => String(h).toLowerCase() === 'row_number');
+  if (idx === -1) return { headers, rows };
+  return {
+    headers: headers.filter((_, i) => i !== idx),
+    rows: rows.map((row) => row.filter((_, i) => i !== idx)),
+  };
 }
